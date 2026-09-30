@@ -7,24 +7,57 @@ import{ChevronRight,Volume2,VolumeX,Heart as HeartIcon,Gift as GiftIcon,Camera,R
 import{birthdayConfig as cfg}from"./data/birthdayConfig";
 
 const memories=[
- {title:"Tiny wonders",subtitle:"A little world full of big imagination",year:"Then",color:"#f4a9cf",p:[-2.7,1.4,0]},
- {title:"Growing dreams",subtitle:"Learning, laughing, changing — one day at a time",year:"Along the way",color:"#bba8ff",p:[2.4,1.6,-.5]},
- {title:"The people who stayed",subtitle:"The quiet comfort of knowing you are loved",year:"Always",color:"#ffd39e",p:[2.5,-1.2,-.2]},
- {title:"A light of your own",subtitle:"The person you are becoming",year:"Today",color:"#f6c2df",p:[-2.4,-1.4,-.8]}
+ {title:"Tiny wonders",subtitle:"A little world full of big imagination",year:"Then",color:"#ffb5d9",p:[-2.35,1.25,.2]},
+ {title:"Growing dreams",subtitle:"Learning, laughing, changing — one day at a time",year:"Along the way",color:"#c8b5ff",p:[2.15,1.45,-.1]},
+ {title:"The people who stayed",subtitle:"The quiet comfort of knowing you are loved",year:"Always",color:"#ffd9a8",p:[2.25,-1.25,.15]},
+ {title:"A light of your own",subtitle:"The person you are becoming",year:"Today",color:"#f7b8dc",p:[-2.2,-1.3,-.15]}
 ];
-
-function Orb({p,color,scale=1}){return <Float speed={1.4} floatIntensity={.55} rotationIntensity={.2}><mesh position={p} scale={scale}><icosahedronGeometry args={[.22,2]}/><meshStandardMaterial color={color} emissive={color} emissiveIntensity={3.5} metalness={.25} roughness={.2}/></mesh><pointLight position={p} color={color} intensity={1.5} distance={4}/></Float>}
-
-function StarField(){const ref=useRef();useFrame((_,d)=>ref.current&&(ref.current.rotation.y+=d*.012));const pts=useMemo(()=>{const a=[];for(let i=0;i<650;i++){const r=5+Math.random()*13,t=Math.random()*Math.PI*2,p=Math.acos(2*Math.random()-1);a.push(Math.sin(p)*Math.cos(t)*r,Math.cos(p)*r,Math.sin(p)*Math.sin(t)*r)}return new Float32Array(a)},[]);return <points ref={ref}><bufferGeometry><bufferAttribute attach="attributes-position" count={pts.length/3} array={pts} itemSize={3}/></bufferGeometry><pointsMaterial size={.026} color="#fff0fb" transparent opacity={.7}/></points>}
-
-function Heart({scale=.08,wire=false}){const ref=useRef();const curve=useMemo(()=>{let a=[];for(let i=0;i<180;i++){let t=i/180*Math.PI*2;a.push(new THREE.Vector3(.22*16*Math.sin(t)**3,.22*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)),0))}return new THREE.CatmullRomCurve3(a,true)},[]);useFrame(s=>{if(ref.current){ref.current.rotation.y=Math.sin(s.clock.elapsedTime*.6)*.18;ref.current.rotation.x=Math.sin(s.clock.elapsedTime*.35)*.04}});return <group ref={ref} scale={scale}><mesh><tubeGeometry args={[curve,180,.38,10,true]}/><meshStandardMaterial color="#ff9dcc" emissive="#e84f9c" emissiveIntensity={3} wireframe={wire}/></mesh></group>}
-
-function Portal(){const ref=useRef();useFrame((s,d)=>{if(ref.current){ref.current.rotation.z+=d*.18;ref.current.scale.setScalar(1+Math.sin(s.clock.elapsedTime*1.2)*.035)}});return <group ref={ref}>{[2.4,2.9,3.4].map((r,i)=><mesh key={r} rotation={[Math.PI/2,0,0]}><torusGeometry args={[r,.025,12,100]}/><meshBasicMaterial color={i===1?"#f2a9d1":"#9b87e8"} transparent opacity={.28-i*.05}/></mesh>)}</group>}
-
-function ChildhoodWorld(){return <group><mesh position={[0,-2.2,-1]} rotation={[-Math.PI/2,0,0]}><circleGeometry args={[4.5,64]}/><meshStandardMaterial color="#28152f" roughness={1}/></mesh><Float floatIntensity={.7}><mesh position={[-2,-.5,-.5]} rotation={[.1,.3,.1]}><boxGeometry args={[1.6,1.2,1.3]}/><meshStandardMaterial color="#75486d" roughness={.6}/></mesh><mesh position={[-2,.25,-.5]}><sphereGeometry args={[.55,24,24]}/><meshStandardMaterial color="#f2b7d4"/></mesh></Float><Float floatIntensity={.5} rotationIntensity={.3}><mesh position={[2,.1,-1]} rotation={[0,.5,.15]}><boxGeometry args={[1.5,1.8,.15]}/><meshStandardMaterial color="#59406f" emissive="#2c1737" emissiveIntensity={.6}/></mesh></Float><Orb p={[-.8,1.8,-1.5]} color="#ffd4e9" scale={1.2}/><Orb p={[1.4,1.7,-2]} color="#bca9ff" scale={.8}/><Sparkles count={80} scale={7} size={3} speed={.5}/></group>}
-
-function MemoryGalaxy({active,setActive}){const g=useRef();useFrame((s,d)=>{if(g.current)g.current.rotation.y+=d*.06});return <group ref={g}><Heart scale={.052} wire/><mesh rotation={[Math.PI/2,0,0]}><torusGeometry args={[3.25,.012,8,100]}/><meshBasicMaterial color="#d9a1dd" transparent opacity={.25}/></mesh>{memories.map((m,i)=><Float key={m.title} speed={1+i*.1} floatIntensity={.35}><group position={m.p}><mesh onClick={e=>{e.stopPropagation();setActive(i)}} scale={active===i?1.65:1}><sphereGeometry args={[.15,24,24]}/><meshStandardMaterial color={m.color} emissive={m.color} emissiveIntensity={active===i?6:3}/></mesh><pointLight color={m.color} intensity={active===i?2:0.35} distance={2.8}/></group></Float>)}</group>}
-
+const constellation=[
+ [-1.8,1.35,.25],[-1.05,1.8,.1],[0,1.35,.05],[1.05,1.8,.1],[1.8,1.35,.25],
+ [1.25,.45,0],[.75,-.2,.05],[0,-1.25,.1],[-.75,-.2,.05],[-1.25,.45,0]
+];
+const links=[[0,1],[1,2],[2,3],[3,4],[0,9],[9,8],[8,7],[7,6],[6,5],[5,4],[5,6],[6,7],[7,8],[8,9]];
+function MemoryGalaxy({active,setActive}){
+ const g=useRef();
+ const focus=memories[active]?.p||[0,0,0];
+ useFrame((s,d)=>{
+   if(g.current){
+     g.current.rotation.y+=d*.025;
+     g.current.rotation.x=Math.sin(s.clock.elapsedTime*.25)*.025;
+   }
+ });
+ return <group ref={g}>
+   <pointLight position={[0,0,2]} color="#dca8ff" intensity={3.5} distance={7}/>
+   <Sparkles count={180} scale={7} size={2.8} speed={.45} color="#f9d9ef"/>
+   {links.map(([a,b],i)=>{
+     const A=new THREE.Vector3(...constellation[a]),B=new THREE.Vector3(...constellation[b]);
+     return <line key={i}>
+       <bufferGeometry><bufferAttribute attach="attributes-position" count={2} array={new Float32Array([...A.toArray(),...B.toArray()])} itemSize={3}/></bufferGeometry>
+       <lineBasicMaterial color="#e9a9d7" transparent opacity={.34}/>
+     </line>
+   })}
+   {constellation.map((p,i)=><Float key={i} speed={.7+i*.03} floatIntensity={.12}>
+     <mesh position={p} scale={i===0||i===4?1.15:.7}>
+       <sphereGeometry args={[.045,16,16]}/>
+       <meshBasicMaterial color="#ffdff1"/>
+     </mesh>
+   </Float>)}
+   <Heart scale={.085} wire/>
+   {memories.map((m,i)=><Float key={m.title} speed={1+i*.12} floatIntensity={.45} rotationIntensity={.15}>
+     <group position={m.p}>
+       <mesh onClick={e=>{e.stopPropagation();setActive(i)}} scale={active===i?1.55:1}>
+         <sphereGeometry args={[.16,32,32]}/>
+         <meshStandardMaterial color={m.color} emissive={m.color} emissiveIntensity={active===i?8:4} metalness={.2} roughness={.16}/>
+       </mesh>
+       <mesh scale={active===i?2.15:1.55}>
+         <sphereGeometry args={[.16,20,20]}/>
+         <meshBasicMaterial color={m.color} transparent opacity={active===i?.12:.045}/>
+       </mesh>
+       <pointLight color={m.color} intensity={active===i?4:1.2} distance={3.5}/>
+     </group>
+   </Float>)}
+ </group>
+}
 function Gift({open,onOpen}){const lid=useRef();useEffect(()=>{if(!lid.current)return;gsap.to(lid.current.rotation,{z:open?-.65:0,x:open?-.65:0,duration:1.3,ease:"back.out(1.6)"});gsap.to(lid.current.position,{y:open?1.45:.75,duration:1.3,ease:"power3.out"})},[open]);return <group onClick={e=>{e.stopPropagation();onOpen()}}><pointLight position={[0,1,1]} color="#ffd4eb" intensity={open?10:2} distance={7}/><mesh position={[0,-.55,0]}><boxGeometry args={[2.35,1.6,1.9]}/><meshStandardMaterial color="#8d416f" metalness={.25} roughness={.4}/></mesh><mesh position={[0,-.55,1]}><boxGeometry args={[.3,1.62,.03]}/><meshStandardMaterial color="#f3bfdc" emissive="#e879b0" emissiveIntensity={1}/></mesh><group ref={lid} position={[0,.75,0]}><mesh><boxGeometry args={[2.6,.28,2.12]}/><meshStandardMaterial color="#c65f9b" metalness={.25} roughness={.35}/></mesh><mesh><boxGeometry args={[.3,.31,2.15]}/><meshStandardMaterial color="#f3bfdc" emissive="#e879b0" emissiveIntensity={1}/></mesh></group>{open&&<Sparkles count={220} scale={6} size={4} speed={1.8} color="#fff0f8"/>}</group>}
 
 function Scene({scene,active,setActive,open,setOpen}){const cam=useRef();const mobile=window.innerWidth<700;const targets=[[0,0,mobile?9:8],[0,.1,mobile?9.5:8.5],[0,0,mobile?10:8.8],[0,.1,mobile?9.5:8.5],[0,0,mobile?10:8.8]];useFrame((s)=>{if(cam.current){cam.current.position.lerp(new THREE.Vector3(...targets[scene]),.035);cam.current.lookAt(0,0,0)}});return <><perspectiveCamera ref={cam} makeDefault position={[0,0,9]} fov={mobile?55:48}/><ambientLight intensity={.3}/><pointLight position={[0,4,4]} intensity={3} color="#ffd9ed"/><pointLight position={[-5,-2,2]} intensity={2} color="#9380ff"/><Stars radius={75} depth={45} count={mobile?650:1200} factor={2} fade speed={.25}/><StarField/><Environment preset="night"/>{scene===0&&<><Portal/><Heart scale={.065}/><Orb p={[-3,1.4,-1]} color="#f2a7cf" scale={1.2}/><Orb p={[3,.8,-1]} color="#a99af3"/></>}{scene===1&&<ChildhoodWorld/>}{scene===2&&<MemoryGalaxy active={active} setActive={setActive}/>} {scene===3&&<><Portal/><Heart scale={.09}/><Sparkles count={130} scale={8} size={3.5} speed={.7}/><Orb p={[-2.7,1.5,-1]} color="#f7b8d9"/><Orb p={[2.7,1.5,-1]} color="#b6a4ff"/><Orb p={[0,-1.8,-1]} color="#ffd5a8"/></>}{scene===4&&<Gift open={open} onOpen={()=>setOpen(true)}/>}</>}
