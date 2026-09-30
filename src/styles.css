@@ -46,11 +46,7 @@ header{z-index:30!important}.logo{color:#49384f!important}.sound,.replay{backgro
 @media(max-width:700px){.cinematic-photo{transform:none!important}.cinematic-photo .photo-depth{inset:9px}.cinematic-label{top:17px;font-size:5px}.cinematic-label i{width:16px}.photo-particle{width:3px;height:3px}}
 
 /* final chapter cinematic birthday background */
-.final{background:
-  linear-gradient(180deg,rgba(255,250,253,.20),rgba(247,241,255,.32)),
-  url("/sister-birthday-3d-surprise/photos/final-sister-placeholder.svg") center/cover no-repeat!important;
-  isolation:isolate;
-}
+.final{background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.9),transparent 25%),radial-gradient(circle at 20% 80%,rgba(255,188,220,.45),transparent 35%),radial-gradient(circle at 80% 20%,rgba(194,184,255,.5),transparent 38%),linear-gradient(135deg,#fff6fb,#f1edff 52%,#e6f4ff)!important;isolation:isolate;}
 .final:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at center,rgba(255,255,255,.10) 0 24%,rgba(255,255,255,.42) 58%,rgba(241,231,250,.58) 100%);mix-blend-mode:screen}
 .final>*{position:relative;z-index:2}
 .final .final-orbit{z-index:1}
