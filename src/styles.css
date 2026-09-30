@@ -48,7 +48,7 @@ header{z-index:30!important}.logo{color:#49384f!important}.sound,.replay{backgro
 /* final chapter cinematic birthday background */
 .final{background:
   linear-gradient(180deg,rgba(255,250,253,.20),rgba(247,241,255,.32)),
-  url("/sister-birthday-3d-surprise/final-birthday-bg.svg") center/cover no-repeat!important;
+  url("/sister-birthday-3d-surprise/photos/final-sister.jpg") center/cover no-repeat!important;
   isolation:isolate;
 }
 .final:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at center,rgba(255,255,255,.10) 0 24%,rgba(255,255,255,.42) 58%,rgba(241,231,250,.58) 100%);mix-blend-mode:screen}
