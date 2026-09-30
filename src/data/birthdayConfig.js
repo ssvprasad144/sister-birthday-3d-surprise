@@ -2,9 +2,9 @@ export const birthdayConfig = {
   name: "My Dear Lovely Sister",
   birthday: "1 October 2005",
   photoSlots: [
-    { id: "childhood", label: "A childhood memory", hint: "Replace with a childhood photo" },
-    { id: "growing", label: "Growing up", hint: "Replace with a school / family photo" },
-    { id: "today", label: "My Dear Lovely Sister, today", hint: "Replace with a recent favorite photo" }
+    { id: "memory-1", label: "A childhood memory", hint: "Use memory-1.jpg" },
+    { id: "memory-2", label: "Growing up", hint: "Use memory-2.jpg" },
+    { id: "memory-4", label: "Today", hint: "Use memory-4.jpg" }
   ],
   chapters: [
     {
