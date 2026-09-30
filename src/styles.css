@@ -55,3 +55,9 @@ header{z-index:30!important}.logo{color:#49384f!important}.sound,.replay{backgro
 .final>*{position:relative;z-index:2}
 .final .final-orbit{z-index:1}
 @media(max-width:700px){.final{background-position:center center;background-size:auto 100%;}.final:after{background:radial-gradient(circle at center,rgba(255,255,255,.12),rgba(247,240,252,.48) 72%)}}
+/* reliability pass: keep the generic artwork visibly present during the cinematic reveal */
+.cinematic-photo .photo-main{z-index:2!important;background:#f5eaf2;will-change:transform,clip-path,opacity;}
+.cinematic-photo .photo-backdrop{z-index:1!important;display:block!important;visibility:visible!important;}
+.cinematic-photo .photo-sheen{position:absolute;inset:-35%;z-index:7;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);transform:translateX(-65%) rotate(5deg);animation:photoSheen 5.5s cubic-bezier(.2,.8,.2,1) .4s infinite alternate;}
+@keyframes photoSheen{to{transform:translateX(65%) rotate(5deg)}}
+@media(max-width:700px){.scene-1 .memory-frame{width:min(72vw,390px)!important;height:min(42vh,430px)!important;margin:14px auto 0!important}.scene-1 .overlay.left{top:7%!important;padding:15px!important}.scene-1 .overlay h2{margin:10px 0 7px!important}.scene-1 .overlay p{margin:7px 0!important}}
