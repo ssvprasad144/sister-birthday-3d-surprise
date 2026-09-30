@@ -1,10 +1,10 @@
 export const birthdayConfig = {
-  name: "Nandini",
+  name: "My Dear Lovely Sister",
   birthday: "1 October 2005",
   photoSlots: [
     { id: "childhood", label: "A childhood memory", hint: "Replace with a childhood photo" },
     { id: "growing", label: "Growing up", hint: "Replace with a school / family photo" },
-    { id: "today", label: "Nandini, today", hint: "Replace with a recent favorite photo" }
+    { id: "today", label: "My Dear Lovely Sister, today", hint: "Replace with a recent favorite photo" }
   ],
   chapters: [
     {
@@ -27,7 +27,7 @@ export const birthdayConfig = {
     }
   ],
   finalMessage: [
-    "Nandini,",
+    "My Dear Lovely Sister,",
     "I hope life always gives you reasons to smile at the smallest things.",
     "May the girl you were, the person you are, and the woman you're becoming always be proud of one another.",
     "Keep your softness. Keep your dreams. Keep becoming more you.",
