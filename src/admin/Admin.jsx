@@ -1,5 +1,6 @@
 import React,{useState}from"react";
 import{ArrowLeft,Camera,Check,Copy,ExternalLink,Image as ImageIcon,Upload}from"lucide-react";
+import "./admin.css";
 const slots=[
 {id:"memory-1",label:"Memory 01",description:"Childhood / early years"},
 {id:"memory-2",label:"Memory 02",description:"Growing up"},
