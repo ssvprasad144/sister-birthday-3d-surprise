@@ -1996,3 +1996,69 @@ body{overflow-x:hidden}
   .experience.scene-4 .final-copy h1{font-size:clamp(33px,10vw,47px)!important}
   .experience.scene-4 .letter{font-size:7.5px!important}
 }
+
+
+/* MOBILE CHAPTER 01 — dedicated phone layout
+   The second screen is scene-0 / THE BEGINNING, not the intro.
+   Do not use the desktop glass card on phones. */
+@media (max-width:700px){
+  .experience.scene-0 .overlay.left{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100dvh!important;
+    max-width:none!important;
+    padding:72px 18px 78px!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    overflow:hidden!important;
+    border:0!important;
+    border-radius:0!important;
+    background:
+      radial-gradient(circle at 50% 35%,rgba(255,255,255,.97),rgba(255,247,252,.90) 48%,rgba(239,235,250,.96) 100%)!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+  }
+  .experience.scene-0 .overlay.left .chapter{
+    font-size:7px!important;
+    letter-spacing:.2em!important;
+    margin-bottom:8px!important;
+  }
+  .experience.scene-0 .overlay.left h2{
+    width:min(94vw,360px)!important;
+    max-width:360px!important;
+    font-size:clamp(39px,11.5vw,54px)!important;
+    line-height:.88!important;
+    letter-spacing:-.04em!important;
+    margin:5px auto 10px!important;
+  }
+  .experience.scene-0 .overlay.left p{
+    width:min(88vw,330px)!important;
+    max-width:330px!important;
+    font-size:10px!important;
+    line-height:1.55!important;
+    margin:0 auto!important;
+  }
+  .experience.scene-0 .overlay.left:after{
+    content:"✦  ✦  ✦"!important;
+    display:block!important;
+    margin-top:22px!important;
+    color:#e96ba7!important;
+    font-size:15px!important;
+    letter-spacing:10px!important;
+    opacity:.8!important;
+  }
+  /* Hide the 3D scene's visual clutter behind the story copy on small screens. */
+  .experience.scene-0 .canvas-wrap{
+    opacity:.25!important;
+  }
+}
+@media(max-width:380px){
+  .experience.scene-0 .overlay.left{padding-left:12px!important;padding-right:12px!important}
+  .experience.scene-0 .overlay.left h2{font-size:clamp(35px,11vw,48px)!important}
+  .experience.scene-0 .overlay.left p{font-size:9px!important}
+}
