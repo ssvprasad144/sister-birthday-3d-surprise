@@ -315,3 +315,19 @@ header{z-index:30!important}.logo{color:#49384f!important}.sound,.replay{backgro
     right:-18vw!important;top:43%!important;
   }
 }
+
+/* Reference-inspired final portrait: floral, glowing, celebratory */
+.final-photo-stage{position:relative;z-index:4;width:min(42vw,570px);height:min(82vh,700px);display:flex;align-items:center;justify-content:center;flex:none;filter:drop-shadow(0 28px 38px rgba(135,69,104,.18))}
+.final-photo-stage .final-photo-card{width:86%!important;height:88%!important;transform:rotate(-2deg);border:5px solid rgba(255,255,255,.94)!important;box-shadow:0 28px 80px rgba(128,64,100,.28),0 0 0 4px rgba(255,111,174,.28),0 0 50px rgba(255,132,187,.38)!important}
+.final-photo-stage .final-photo-card .final-photo,.final-photo-stage .final-photo-card .final-photo.final-photo-loaded{object-fit:cover!important;object-position:center 34%!important}
+.final-petal{position:absolute;z-index:7;color:#ff5f9f;text-shadow:0 4px 18px rgba(226,67,133,.32);pointer-events:none;animation:finalPetalFloat 3.6s ease-in-out infinite}
+.fp1{font-size:64px;left:1%;bottom:8%;transform:rotate(-20deg)}
+.fp2{font-size:52px;right:0;bottom:13%;animation-delay:.8s}
+.fp3{font-size:48px;right:3%;top:22%;animation-delay:1.2s}
+.fp4{font-size:45px;left:4%;top:18%;animation-delay:.45s}
+.final-ribbon{position:absolute;z-index:6;left:1%;right:0;bottom:7%;height:85px;border:12px solid rgba(244,90,150,.68);border-left-color:transparent;border-right-color:transparent;border-radius:50%;transform:rotate(7deg);filter:drop-shadow(0 6px 10px rgba(210,70,130,.22));pointer-events:none}
+.final-ribbon:after{content:"";position:absolute;width:115px;height:42px;left:12%;top:-25px;border:10px solid rgba(255,145,190,.72);border-radius:50%;transform:rotate(-28deg)}
+.final-photo-stage:before,.final-photo-stage:after{content:"";position:absolute;z-index:2;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,129,181,.42),rgba(255,189,216,.18) 35%,transparent 70%);filter:blur(7px);pointer-events:none}
+.final-photo-stage:before{left:-5%;top:7%}.final-photo-stage:after{right:-4%;bottom:5%}
+@keyframes finalPetalFloat{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -12px;rotate:5deg}}
+@media(max-width:700px){.final-photo-stage{width:min(86vw,390px)!important;height:min(50vh,430px)!important}.final-photo-stage .final-photo-card{width:76%!important;height:88%!important}.fp1{font-size:42px}.fp2{font-size:38px}.fp3{font-size:34px}.fp4{font-size:32px}.final-ribbon{height:58px;border-width:8px;bottom:4%}}
