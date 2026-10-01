@@ -1341,3 +1341,127 @@ body{overflow-x:hidden}
   .photo-sheen{animation:none!important}
   .final-reference:after{animation:none!important}
 }
+
+
+/* MOBILE CHAPTER 02 — dedicated phone composition
+   Overrides desktop fixed positioning that caused the giant empty card. */
+@media (max-width:700px){
+  .experience.scene-1{
+    min-height:100dvh!important;
+    height:100dvh!important;
+    overflow:hidden!important;
+  }
+  .experience.scene-1 .overlay.left{
+    position:absolute!important;
+    inset:0!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    width:100%!important;
+    height:100dvh!important;
+    max-width:none!important;
+    padding:78px 18px 82px!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:linear-gradient(180deg,rgba(255,249,253,.96) 0%,rgba(255,249,253,.90) 45%,rgba(244,240,255,.95) 100%)!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    text-align:center!important;
+    overflow:hidden!important;
+  }
+  .experience.scene-1 .overlay.left .chapter{
+    flex:none!important;
+    font-size:7px!important;
+    letter-spacing:.2em!important;
+    margin:0 0 6px!important;
+  }
+  .experience.scene-1 .overlay.left h2{
+    flex:none!important;
+    width:100%!important;
+    max-width:360px!important;
+    font-size:clamp(31px,9.5vw,44px)!important;
+    line-height:.9!important;
+    letter-spacing:-.035em!important;
+    margin:4px auto 7px!important;
+  }
+  .experience.scene-1 .overlay.left p{
+    flex:none!important;
+    width:min(90vw,340px)!important;
+    font-size:9px!important;
+    line-height:1.42!important;
+    margin:0 auto 9px!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame{
+    position:relative!important;
+    inset:auto!important;
+    right:auto!important;
+    top:auto!important;
+    left:auto!important;
+    bottom:auto!important;
+    flex:none!important;
+    width:min(68vw,265px)!important;
+    height:min(45vh,315px)!important;
+    min-height:225px!important;
+    max-height:315px!important;
+    margin:7px auto 0!important;
+    padding:7px!important;
+    border-radius:22px!important;
+    transform:rotate(-2deg)!important;
+    box-shadow:0 22px 55px rgba(104,70,100,.22)!important;
+    overflow:hidden!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-depth{
+    position:absolute!important;
+    inset:7px!important;
+    width:auto!important;
+    height:auto!important;
+    border-radius:15px!important;
+    overflow:hidden!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-main{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    clip-path:none!important;
+    object-fit:cover!important;
+    transform:none!important;
+    animation:none!important;
+    z-index:2!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-backdrop{
+    opacity:.18!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-curtain,
+  .experience.scene-1 .overlay.left .memory-frame .photo-light{
+    opacity:.16!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-grain{
+    opacity:.04!important;
+    animation:none!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .frame-caption{
+    left:16px!important;
+    bottom:14px!important;
+    text-align:left!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .frame-caption strong{
+    font-size:17px!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .cinematic-label{
+    top:13px!important;
+    font-size:4px!important;
+  }
+  .experience.scene-1 .overlay.left .memory-frame .photo-particle{
+    display:none!important;
+  }
+}
