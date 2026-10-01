@@ -93,3 +93,28 @@ header{z-index:30!important}.logo{color:#49384f!important}.sound,.replay{backgro
 /* direct JPEG reveal: uploaded photos are always visible */
 .cinematic-photo .photo-main{opacity:1!important;clip-path:inset(0)!important;transform:scale(1)!important;z-index:2!important;animation:photoCinematicIn 1.4s cubic-bezier(.16,1,.3,1) both!important}.cinematic-photo .photo-backdrop{opacity:.32!important;z-index:1!important}.cinematic-photo .photo-depth{background:#f5eaf2!important}@keyframes photoCinematicIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
 .scene-1 .memory-frame{width:min(38vw,430px)!important;height:min(60vh,520px)!important}.scene-1 .memory-frame .photo-main{object-fit:cover!important}@media(max-width:700px){.scene-1 .memory-frame{width:min(78vw,390px)!important;height:min(50vh,430px)!important}}
+
+/* final photo cinematic reveal */
+.final-photo-card{perspective:1200px;animation:finalCardIn 1.6s cubic-bezier(.16,1,.3,1) both}
+.final-photo-card .final-photo{transform:scale(1.16);opacity:0!important;animation:finalPhotoReveal 5s cubic-bezier(.16,1,.3,1) .15s forwards!important;will-change:transform,opacity,filter}
+.final-photo-card .final-photo.final-photo-loaded{opacity:0!important;animation:finalPhotoReveal 5s cubic-bezier(.16,1,.3,1) .15s forwards!important}
+.final-photo-card:before{content:"";position:absolute;inset:-45%;z-index:3;pointer-events:none;background:linear-gradient(115deg,transparent 43%,rgba(255,255,255,.9) 50%,transparent 57%);transform:translateX(-75%) rotate(7deg);animation:finalSweep 3.8s cubic-bezier(.2,.8,.2,1) .45s forwards}
+.final-photo-card:after{box-shadow:inset 0 0 45px rgba(255,255,255,.18),0 0 35px rgba(237,110,170,.18)}
+.final-photo-label{opacity:0;animation:finalLabelIn .8s ease 2.3s forwards}
+.final-copy{animation:finalCopyIn 1.4s cubic-bezier(.16,1,.3,1) .5s both}
+.final-copy h1{animation:finalTitleIn 1.6s cubic-bezier(.16,1,.3,1) .85s both}
+.final-copy .letter{animation:finalLetterIn 1.2s ease 1.45s both}
+.final-signoff{animation:finalLetterIn 1s ease 2.1s both}
+.final-orbit{animation:finalOrbitIn 1.2s ease .7s both}
+.final-orbit span{animation:finalOrbitPulse 3s ease-in-out infinite}
+.final-photo-error{position:absolute;inset:9px;z-index:5;display:flex;align-items:center;justify-content:center;border-radius:17px;background:#f6edf6;color:#8b607d;font-size:9px;letter-spacing:.2em}
+@keyframes finalCardIn{from{opacity:0;transform:translate3d(-90px,20px,0) rotateY(18deg) scale(.84)}to{opacity:1;transform:translate3d(0,0,0) rotateY(0) scale(1)}}
+@keyframes finalPhotoReveal{0%{opacity:0;transform:scale(1.2);filter:brightness(.55) saturate(.55);clip-path:inset(100% 0 0 0)}18%{opacity:1;clip-path:inset(65% 0 0 0)}55%{opacity:1;clip-path:inset(0);filter:brightness(.92) saturate(.9);transform:scale(1.05)}100%{opacity:1;clip-path:inset(0);filter:brightness(1) saturate(1.08);transform:scale(1)}}
+@keyframes finalSweep{0%{transform:translateX(-75%) rotate(7deg);opacity:0}25%{opacity:1}72%{opacity:1}100%{transform:translateX(75%) rotate(7deg);opacity:0}}
+@keyframes finalLabelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes finalCopyIn{from{opacity:0;transform:translate3d(70px,0,0)}to{opacity:1;transform:none}}
+@keyframes finalTitleIn{from{opacity:0;transform:translateY(35px) scale(.94);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes finalLetterIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes finalOrbitIn{from{opacity:0;transform:scale(.5) rotate(-35deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes finalOrbitPulse{0%,100%{transform:scale(.8);opacity:.5}50%{transform:scale(1.25);opacity:1}}
+@media(max-width:700px){.final-photo-card{animation:finalCardMobile 1.2s cubic-bezier(.16,1,.3,1) both}.final-copy{animation:finalLetterIn 1s ease .35s both}@keyframes finalCardMobile{from{opacity:0;transform:translateY(40px) scale(.88)}to{opacity:1;transform:none}}}
